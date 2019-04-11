@@ -74,14 +74,13 @@ int TestGloutonCompatible(int k, int V[]){
   if(k >= 3){ //on vérifie pour k >= 3 car pour <= 2 on sait que tout système est glouton compatible
     for(s = V[2] + 2; s <= V[k - 2] + V[k - 1] -1 ; s++){ //ne pas oublier de modifier les indices pour ne pas sortir du tableau
       for(j = 1; j <= k ; j++){
-	if(V[j-1] < s) 
-	  {
-	    r1 = AlgoGlouton(s, V, k);
-	    r2 = 1 + AlgoGlouton(s - V[j -1], V, k); 
-	    if(r1 > r2){
-	      return 0; 
-	    }
+	if(V[j-1] < s){
+	  r1 = AlgoGlouton(s, V, k);
+	  r2 = 1 + AlgoGlouton(s - V[j -1], V, k); 
+	  if(r1 > r2){
+	    return 0; 
 	  }
+	}
       }
     }
   }
@@ -105,7 +104,7 @@ int main(int argc, char **argv){
       for(j = 1; j < taille; j++){
 	V[j] = rand()%INTERVALLE + 2; //on génère des entiers aléatoires entre 2 et INTERVALLE  
       }
-      tri_rapide(V, taille); //on tri le tableau
+      tri_rapide(V, taille); //on trie le tableau
       a = TestGloutonCompatible(taille, V); //on vérifie s'il est glouton compatible
       if(a){
 	cpt++; //dans ce cas on incrémente un compteur
