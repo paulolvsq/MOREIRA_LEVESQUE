@@ -6,7 +6,7 @@ int AlgoGlouton(int s, int V[], int k){
   int j;
   int cpt = 0;
   for(j = 0; j < k; j++){
-	liste_bocaux[j] = 0; //on met toutes les cases du tableau à 0 pour les incrémenter plus tard
+    liste_bocaux[j] = 0; //on met toutes les cases du tableau à 0 pour les incrémenter plus tard
   }
   int i = k - 1; //le -1 est important pour ne pas sortir du tableau
   while(s > 0){
@@ -41,24 +41,22 @@ int main(int argc, char **argv){
     fprintf(stderr, "Fichier vide.\n");
   }
 
-  else
-	{
-	  //on recupere s et k 
-	  fscanf(fichier, "%d %d", &s, &k);
-	  int V[k]; //on declare un tableau de taille k pour stocker le système de capacité
-	  //on recupere le tableau sur le reste du fichier
-	  for(a = 0; a < k; a++)
-		{
-		  fscanf(fichier, "%d", &V[a]);
-		}	
-	  t1 = clock();		
-	  int nbMinBocaux = AlgoGlouton(s, V, k); //on récupère la valeur retournée par l'algorithme glouton
-	  printf("\n");
-	  printf("Quantite = %d\nNombre de bocaux minimum : %d.\n", s, nbMinBocaux); //on l'affiche
-	  t2 = clock();
-	  temps = (float) (t2-t1)/CLOCKS_PER_SEC; //on calcule le temps d'exécution
-	  printf("Temps d'execution : %f secondes.\n", temps); //on affiche le temps
-	}
+  else{
+    //on recupere s et k 
+    fscanf(fichier, "%d %d", &s, &k);
+    int V[k]; //on declare un tableau de taille k pour stocker le système de capacité
+    //on recupere le tableau sur le reste du fichier
+    for(a = 0; a < k; a++){
+	fscanf(fichier, "%d", &V[a]);
+    }	
+    t1 = clock();		
+    int nbMinBocaux = AlgoGlouton(s, V, k); //on récupère la valeur retournée par l'algorithme glouton
+    printf("\n");
+    printf("Quantite = %d\nNombre de bocaux minimum : %d.\n", s, nbMinBocaux); //on l'affiche
+    t2 = clock();
+    temps = (float) (t2-t1)/CLOCKS_PER_SEC; //on calcule le temps d'exécution
+    printf("Temps d'execution : %f secondes.\n", temps); //on affiche le temps
+  }
 
   fclose(fichier);
 
