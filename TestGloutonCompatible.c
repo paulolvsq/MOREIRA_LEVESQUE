@@ -94,9 +94,9 @@ int main(int argc, char **argv){
   int i = 0, taille = 1, j, a;//variables de compteur, de taille k, de boucles
   clock_t t1, t2; //variables de temps
   int cpt = 0; //compteur de systèmes glouton compatibles
-  int nbTours = 1000; //nombre de tests de systèmes aléatoires
+  int nbTours = 10000; //nombre de tests de systèmes aléatoires
   t1 = clock(); //on prend le temps de depart
-  while(taille < 100){//on teste pour un k allant jusqu'à 150
+  while(taille < 100){//on teste pour un k allant jusqu'à 100
     taille++; //on incrémente la taille en premier pour avoir accès à la bonne case du tableau
     while(i < nbTours){ //on lance nbTours tests
       int V[taille]; //on déclare un tableau qui va stocker le système de capacité 
