@@ -96,7 +96,11 @@ int main(int argc, char **argv){
   int cpt = 0; //compteur de systèmes glouton compatibles
   int nbTours = 10000; //nombre de tests de systèmes aléatoires
   t1 = clock(); //on prend le temps de depart
+<<<<<<< HEAD
   while(taille < 100){//on teste pour un k allant jusqu'à 100
+=======
+  while(taille < 500){//on teste pour un k allant jusqu'à 150
+>>>>>>> 1b64d84ad7b456d7726ca11c9712ec7791861652
     taille++; //on incrémente la taille en premier pour avoir accès à la bonne case du tableau
     while(i < nbTours){ //on lance nbTours tests
       int V[taille]; //on déclare un tableau qui va stocker le système de capacité 
