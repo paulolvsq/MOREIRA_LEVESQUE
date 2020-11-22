@@ -74,13 +74,13 @@ int TestGloutonCompatible(int k, int V[]){
   if(k >= 3){ //on vérifie pour k >= 3 car pour <= 2 on sait que tout système est glouton compatible
     for(s = V[2] + 2; s <= V[k - 2] + V[k - 1] -1 ; s++){ //ne pas oublier de modifier les indices pour ne pas sortir du tableau
       for(j = 1; j <= k ; j++){
-	if(V[j-1] < s){
-	  r1 = AlgoGlouton(s, V, k);
-	  r2 = 1 + AlgoGlouton(s - V[j -1], V, k); 
-	  if(r1 > r2){
-	    return 0; 
-	  }
-	}
+        if(V[j-1] < s){
+          r1 = AlgoGlouton(s, V, k);
+          r2 = 1 + AlgoGlouton(s - V[j -1], V, k); 
+          if(r1 > r2){
+            return 0; 
+          }
+        }
       }
     }
   }
@@ -90,28 +90,28 @@ int TestGloutonCompatible(int k, int V[]){
 int main(int argc, char **argv){ 
 
   srand(time(NULL)); //réinitialiser la graine pour l'aléatoire
+
   float temps; //va servir à stocker le temps d'exécution
   int i = 0, taille = 1, j, a;//variables de compteur, de taille k, de boucles
   clock_t t1, t2; //variables de temps
   int cpt = 0; //compteur de systèmes glouton compatibles
-  int nbTours = 10000; //nombre de tests de systèmes aléatoires
-  t1 = clock(); //on prend le temps de depart
-<<<<<<< HEAD
-  while(taille < 100){//on teste pour un k allant jusqu'à 100
-=======
-  while(taille < 500){//on teste pour un k allant jusqu'à 150
->>>>>>> 1b64d84ad7b456d7726ca11c9712ec7791861652
+  int nbTours = 1000; //nombre de tests de systèmes aléatoires
+  int tailleK = 100; //taille de k
+
+  t1 = clock(); //on prend le temps de départ
+
+  while(taille < tailleK){//on teste pour un k allant jusqu'à 100
     taille++; //on incrémente la taille en premier pour avoir accès à la bonne case du tableau
     while(i < nbTours){ //on lance nbTours tests
       int V[taille]; //on déclare un tableau qui va stocker le système de capacité 
       V[0] = 1;  //on n'oublie pas de mettre la première case du tableau à 1
       for(j = 1; j < taille; j++){
-	V[j] = rand()%INTERVALLE + 2; //on génère des entiers aléatoires entre 2 et INTERVALLE  
+        V[j] = rand()%INTERVALLE + 2; //on génère des entiers aléatoires entre 2 et INTERVALLE  
       }
       tri_rapide(V, taille); //on trie le tableau
       a = TestGloutonCompatible(taille, V); //on vérifie s'il est glouton compatible
       if(a){
-	cpt++; //dans ce cas on incrémente un compteur
+        cpt++; //dans ce cas on incrémente un compteur
       }
       i++; //ne pas oublier d'incrémenter le i
     }
@@ -120,8 +120,10 @@ int main(int argc, char **argv){
     cpt = 0; //on remet le cpt à 0
     i = 0; //on remet le i à 0
   }
+
   t2 = clock(); //on stocke le temps de fin
   temps = (float) (t2-t1)/CLOCKS_PER_SEC; //on met le temps en secondes
   printf("Temps d'execution : %f secondes.\n", temps);
+
   return 0;
 }
