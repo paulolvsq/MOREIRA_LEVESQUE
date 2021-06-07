@@ -1,22 +1,23 @@
-CC = gcc
+CC = gcc-11
 GLOUTON = AlgoGlouton.c
 RECHERCHE = RechercheExhaustive.c
 PROGDYN = AlgoProgDyn.c
 COMPATIBLE = TestGloutonCompatible.c
+CFLAGS = -ftree-vectorize -O3 -fopenmp
 
 all : glouton recherche algoprogdyn compatible
 
 glouton : $(GLOUTON)
-	$(CC) -o $@ $<
+	$(CC) $(CFLAGS) -o $@ $<
 
 recherche : $(RECHERCHE)
-	$(CC) -o $@ $<
+	$(CC) $(CFLAGS) -o $@ $<
 
 algoprogdyn : $(PROGDYN)
-	$(CC) -o $@ $<
+	$(CC) $(CFLAGS) -o $@ $<
 
 compatible : $(COMPATIBLE)
-	$(CC) -o $@ $<
+	$(CC) $(CFLAGS) -o $@ $<
 
 clean :
 	rm -f *~ *.o glouton recherche algoprogdyn compatible
