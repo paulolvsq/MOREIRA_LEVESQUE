@@ -5,7 +5,13 @@ PROGDYN = AlgoProgDyn.c
 COMPATIBLE = TestGloutonCompatible.c
 CFLAGS = -ftree-vectorize -O3 -fopenmp
 
-all : glouton recherche algoprogdyn compatible
+all : glouton recherche algoprogdyn compatible exec
+
+exec :
+	./glouton res_glouton/donnees_glouton.txt
+	./algoprogdyn res_dyn/donnees_progdyn.txt
+	./recherche res_recherche/donnees_recherche.txt
+	./compatible res_compatible/donnees.txt
 
 glouton : $(GLOUTON)
 	$(CC) $(CFLAGS) -o $@ $<
